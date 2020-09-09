@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<head>
+    <title>Register/Login validation</title>
+    <meta name="referrer" content="strict-origin" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+<link rel='stylesheet' type="text/css" href="style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src='function.js'></script>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@469&amp;display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class='col-xl-12 col-lg-12' id='main'>
+        <div class='col-xl-6 col-lg-6 col-md-6 col-sm-6' id='inside'>
+        <button type="button" class="btn btn-primary btn-lg btn-block" id='reg' onclick='open_win(1)'>Register</button>
+        <button type="button" class="btn btn-success btn-lg btn-block" id='log'onclick='open_win(2)'>Login</button>
+    </div>
+    </div>
+
+    <!---REGISTER FORM-->
+   
+        <div class="col-xl-6 col-md-6 col-sm-12 col-xs-12" id="register_div">
+            <i class="fa fa-times-circle" id='close_btn' onclick='close_win(1)'></i>
+            <h4 class="title">Join us</h4>
+            
+            <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                     </div>
+                    <input name="" class="form-control" id="full_name" placeholder="Full name" type="text">
+                </div> <!-- form-group// -->
+                <span id='name_error'></span>
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-hashtag"></i></span>
+                     </div>
+                    <input  class="form-control" id="username" placeholder="Username" type="text">
+                </div> <!-- form-group// -->
+                <span id='index_error'></span>
+                
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-location-arrow"></i> </span>
+                    </div>
+                    <select class="form-control" id="specialization">
+                        <option selected="">Region</option>
+                        <option selected>Europe</option>
+                        <option>Africa</option>
+                        <option>Asia</option>
+                        <option>USA</option>
+                        <option>Australia</option>
+                        <option>India</option>
+                    </select>
+                </div> <!-- form-group end.// -->
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" id="password" placeholder="Password" type="password">
+                </div> <!-- form-group// -->
+                <span id='password_error'></span>
+               
+                <div class="form-group">
+                    <button type="button" id="register_btn" class="btn btn-primary btn-block"> Register </button>
+                </div> <!-- form-group// -->      
+                <span id='reg_info'></span>                                                
+             
+       
+            </div>
+          
+            <!--REGISTER FORM-->
+            <!---LOGIN WINDOW-->
+            <div class='col-xl-8 col-md-8 col-sm-8 col-xs-8' id='login_div'>
+
+                <i class="fa fa-times-circle" id='close_btn' onclick='close_win(2)'></i>
+                <h3 class='page_title'>Login</h3>
+              
+                
+               
+              <div class='col-xl-6 col-lg-6 col-md-12 col-sm-12 col-xs-12' id='login_inside'>
+            
+            
+            
+            
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                     </div>
+                    <input  class="form-control" placeholder="Username" id="udddsername" type="text" >
+                </div>
+            
+                <div class="form-group input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                    </div>
+                    <input class="form-control" id="password_login" placeholder="Password" type="password">
+                </div>
+            
+                <div class="form-group">
+                    <button type="button" id="login_btn" class="btn btn-primary btn-block" onclick="login_user()" > Login</button>
+                   
+                </div> 
+                <span id='login_inf'></span>
+              </div>
+              
+            
+            
+                </div>
+                <!--LOGIN WINDOW-->
+</body>
+</html>
