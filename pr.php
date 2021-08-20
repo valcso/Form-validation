@@ -199,12 +199,43 @@ class ProductsController extends Controller
      */
     public function updateProductDetails(StoreProductRequest $request)
     {
-        // dd($request);
         $product = new Products();
         $id = $product->updateProductDetails($request->all());
+       
+        $name=$request->input('name');
+       $this->updateProductDescription($name,$id,$type='description');
 
         \Flash::success(trans('admin.msg_success_updated'));
         return redirect()->to('admin/products/edit/' . $id);
+    
+    }
+
+    public function updateProductDescription ($id,$proizvodjac,$dezen,$sezona,$dimenzija,$type)
+
+    {
+        $product = Products::where('id',$id)->get();
+        if($type='parameters')
+        {
+
+          
+          $short_description_proizvodjac=ucwords(strtolower($proizvodjac));
+          $description = '';
+          $short_description=$short_description_proizvodjac." ".$dezen;
+          
+          if($sezona == 'za sve sezone')
+          {
+              $description = "Guma za sve sezone ".''.$proizvodjac.' '.$dezen.' u dimenziji '.$dimenzija.' sa garancijom od 36 meseci, dostupna je uz besplatnu isporuku na adresu vašeg vulkanizera.';
+          }
+          else 
+          {
+            $sezona = ucwords(strtolower($sezona));
+            $description =  $sezona.' guma '.$proizvodjac.' '.$dezen.' u dimenziji '.$dimenzija.' sa garancijom od 36 meseci, dostupna je uz besplatnu isporuku na adresu vašeg vulkanizera.';
+
+          }
+        }
+        
+        Products::where('id',$id)->update(['desc' => $description,'short_desc'=>$short_description]);
+    
     }
 
     /**
@@ -222,8 +253,18 @@ class ProductsController extends Controller
             }
         }
 
+       $id=$request->id;
+       $proizvodjac = $request->input('ef_proizvodjac');
+       $dezen = $request->input('ef_dezen');
+       $sezona = $request->input('ef_sezona');
+       $dimenzija = $request->input('ef_dimensions');
+       $type='parameters';
+       
+       $this->updateProductDescription($id,$proizvodjac,$dezen,$sezona,$dimenzija,$type);
+   
+
         \Flash::success(trans('admin.msg_success_updated'));
-        return redirect()->to('admin/products/edit/' .$request->id.'/parameters');
+         return redirect()->to('admin/products/edit/' .$request->id.'/parameters');
     }
 
 
@@ -235,6 +276,8 @@ class ProductsController extends Controller
     {
         $product = new Products();
         $id = $product->createProduct($request->all());
+
+        
 
         \Flash::success(trans('admin.msg_success_added'));
         return redirect()->to('admin/products/edit/' . $id);
